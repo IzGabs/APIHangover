@@ -1,0 +1,25 @@
+[
+    {
+        "id_drink": 1,
+        "nome_drink": "Caipirinha",
+        "tipo": "Coquetel",
+        "ingredientes": [
+            "Cachaça",
+            "Limão",
+            "Açucar",
+            "Gelo"
+        ]
+    },
+    {
+        "id_drink": 2,
+        "nome_drink": "Marguerita",
+        "tipo": "Coquetel",
+        "ingredientes": [
+            "Tequila",
+            "Sal",
+            "Suco de Limão",
+            "Licor de Laranja",
+            "Gelo"
+        ]
+    }
+]
