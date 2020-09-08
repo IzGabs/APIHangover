@@ -5,7 +5,9 @@ module.exports = () => {
     const drinksData = require('../data/drinks.json')
     const drinks = drinksData;
 
-    controller.listarDrinks = (req, res) => { res.status(200).json(drinks) }
+    controller.listarDrinks = (req, res) => {
+        res.status(200).json(drinks)
+    }
 
     return controller;
 }
