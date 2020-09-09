@@ -6,8 +6,9 @@ module.exports = () => {
 
     const drinksData = require('../data/drinks.json')
     const drinks = drinksData;
-
+  
     controller.listarDrinks = (req, res) => {
+        console.log('ab')
         mysql.getConnection((error, conn) => {
             if (error) { return res.status(500).send({ error: error }) }
             conn.query('SELECT * FROM drinks',
@@ -33,7 +34,6 @@ module.exports = () => {
                     return res.status(201).send(response);
                 }
             )
-
         })
     }
 
@@ -52,15 +52,43 @@ module.exports = () => {
     };
 
 
-    controller.update = (req, res) => {
-        res.send(req.params.id);
+    controller.update = (req, res, next) => {
+        mysql.getConnection((error, conn) => {
+            conn.query(
+                ` UPDATE drinks
+                    SET nome = ?,
+                        tipo = ?,
+                        ingrediente = ?
+                    WHERE drinkID = ?`,
+                [req.body.nome, req.body.tipo, req.body.ingrediente, req.params.id],
+                (error, result, field) => {
+                    conn.release();
+                    if (error) { return res.status(500).send({ error: error }) }
+                    const response = {
+                        message: 'Atualizado com sucesso',
+                    }
+                    return res.status(202).send(response);
+                }
+            )
+        })
     };
 
-    controller.delete = (req, res) => {
-        res.send(req.params.id);
+    controller.delete = (req, res, next) => {
+        mysql.getConnection((error, conn) => {
+            conn.query(
+                ` DELETE FROM drinks WHERE drinkID = ?`,
+                [req.params.id],
+                (error, result, field) => {
+                    conn.release();
+                    if (error) { return res.status(500).send({ error: error }) }
+                    const response = {
+                        message: 'Removido com sucesso',
+                    }
+                    return res.status(202).send(response);
+                }
+            )
+        })
     };
-
-
-
+    
     return controller;
 }
