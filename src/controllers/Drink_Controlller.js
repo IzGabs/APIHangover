@@ -60,5 +60,7 @@ module.exports = () => {
         res.send(req.params.id);
     };
 
+    
+
     return controller;
 }

@@ -5,7 +5,8 @@ const app = express()
 const PORT = process.env.PORT || 3333;
 
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 const routesDrinks = require('./routes/drinks_routes')
