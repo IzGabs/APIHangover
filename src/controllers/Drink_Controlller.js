@@ -6,9 +6,8 @@ module.exports = () => {
 
     const drinksData = require('../data/drinks.json')
     const drinks = drinksData;
-  
+
     controller.listarDrinks = (req, res) => {
-        console.log('ab')
         mysql.getConnection((error, conn) => {
             if (error) { return res.status(500).send({ error: error }) }
             conn.query('SELECT * FROM drinks',
@@ -37,7 +36,7 @@ module.exports = () => {
         })
     }
 
-    controller.listarDrinksById = (req, res, next) => {
+    controller.searchbyId = (req, res, next) => {
         mysql.getConnection((error, conn) => {
             if (error) { return res.status(500).send({ error: error }) }
             conn.query(
@@ -89,6 +88,6 @@ module.exports = () => {
             )
         })
     };
-    
+
     return controller;
 }

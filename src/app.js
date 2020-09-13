@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
+const authToken = require('./controllers/app_controller')()
 
 const PORT = process.env.PORT || 3333;
 
@@ -17,7 +18,7 @@ app.listen(PORT, () => { console.log(`Server running in http://localhost:${PORT}
 
 app.use(express.json())
 app.use('/', routesConfig)
-app.use('/api', routesDrinks)
+app.use('/api', authToken.authenticateToken, routesDrinks)
 app.use('/access', access)
 
 
