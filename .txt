@@ -1,0 +1,9 @@
+CREATE TABLE `drinks` (
+  `drinkID` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(40) DEFAULT NULL,
+  `Tipo` varchar(40) DEFAULT NULL,
+  `Ingrediente` varchar(40) DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `quantidade` int DEFAULT NULL,
+  PRIMARY KEY (`drinkID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

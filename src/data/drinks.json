@@ -21,5 +21,12 @@
             "Licor de Laranja",
             "Gelo"
         ]
+    },
+
+    {
+        "nome": "Caipirinha",
+        "tipo": "Coquetel",
+        "ingrediente": "Cachaça",
+        "valor": "100"
     }
 ]

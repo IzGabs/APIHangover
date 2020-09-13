@@ -1,0 +1,50 @@
+GET http://localhost:3333/api/Listar
+Authorization: 
+
+
+###
+
+POST http://localhost:3333/access/login
+Content-Type: application/json
+
+{
+ "user" : "El Gabiru",
+ "password" : 123456789
+}
+
+###
+
+POST http://localhost:3333/api/adicionar
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+ "nome": "Corote",
+ "tipo": "Cachaça",
+ "ingrediente": "Compra no mercado"
+}
+
+
+###
+
+PUT http://localhost:3333/api/update/3
+Authorization: Bearer 
+Content-Type: application/json
+
+    {
+      "nome": "Corote",
+      "tipo": "Cachaça",
+      "ingrediente": "Compra na padaria"
+    }
+
+###
+
+DELETE  http://localhost:3333/api/delete/3
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+GET http://localhost:3333/api/searchDrink/2
+Authorization: Bearer 
+Content-Type: application/json
+

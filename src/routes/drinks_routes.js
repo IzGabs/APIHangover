@@ -1,14 +1,10 @@
 const drinskRouter = require('express').Router();
 const controllerDrinks = require('../controllers/Drink_Controlller')()
-const authToken = require('../controllers/app_controller')()
 
-drinskRouter.get('/Listar', 
-//authToken.authenticateToken, 
-controllerDrinks.listarDrinks)
 
-drinskRouter.get('/Listar/:id', 
-//authToken.authenticateToken, 
-controllerDrinks.listarDrinksById);
+drinskRouter.get('/Listar', controllerDrinks.listarDrinks)
+
+drinskRouter.get('/searchDrink/:id', controllerDrinks.searchbyId);
 
 drinskRouter.post('/adicionar', 
 //authToken.authenticateToken, 
@@ -21,5 +17,15 @@ controllerDrinks.update);
 drinskRouter.delete('/delete/:id', 
 //authToken.authenticateToken,
 controllerDrinks.delete);
+
+drinskRouter.get('/calculoSoma', 
+//authToken.authenticateToken,
+controllerDrinks.calculoSoma);
+
+drinskRouter.get('/calculoMap', 
+//authToken.authenticateToken,
+controllerDrinks.calculoMap);
+
+
 
 module.exports = drinskRouter;
