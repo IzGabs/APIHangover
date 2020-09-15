@@ -12,9 +12,9 @@
     "jsonwebtoken": "^8.5.1"
   },
   "scripts": {
-    "test": "ndoe src/app.js",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "test": "node src/app.js",
+    "start": "npx cross-env MOD_RUN=PRODUCTION node src/app.js",
+    "dev": "npx cross-env MOD_RUN=DEV_MODE nodemon src/app.js "
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/IzGabs/APIHangover/issues"
   },
-  "homepage": "https://github.com/IzGabs/APIHangover#readme"
+  "homepage": "https://github.com/IzGabs/APIHangover#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
 }
