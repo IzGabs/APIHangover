@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const authToken = require('./controllers/app_controller')()
+require('dotenv/config')
 
 const PORT = process.env.PORT || 3333;
 
@@ -18,17 +19,23 @@ app.listen(PORT, () => { console.log(`Server running in http://localhost:${PORT}
 
 app.use(express.json())
 app.use('/', routesConfig)
-app.use('/api', 
-//authToken.authenticateToken,
- routesDrinks)
+
+if (process.env.MOD_RUN == "PRODUCTION") {
+    console.log('Server Running in ' + process.env.MOD_RUN)
+    app.use('/api', authToken.authenticateToken, routesDrinks)
+} else {
+    console.log('Server Running in ' + process.env.MOD_RUN)
+    app.use('/api', routesDrinks)
+}
+
 app.use('/access', access)
 
 
 // app.use((req, res, next) => {
-    
+
 //         const blocked = ["192.168.56.1"]
 //         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-        
+
 //         if(ip.substr(0,7) == "::ffff:"){
 //             ip = ip.substr(7,12)
 //         }
@@ -36,7 +43,7 @@ app.use('/access', access)
 //         if(blocked.includes(ip)) {
 //             return res.send('ip bloqueado')
 //         }
-        
+
 
 //         return next();
 // });
