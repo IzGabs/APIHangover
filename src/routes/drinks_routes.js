@@ -27,5 +27,4 @@ drinskRouter.get('/calculoMap',
 controllerDrinks.calculoMap);
 
 
-
 module.exports = drinskRouter;
