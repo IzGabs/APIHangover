@@ -1,22 +1,32 @@
-require('dotenv/config')
+const jwt = require('jsonwebtoken')
 
 module.exports = () => {
 
     const controller = {}
-    const users = require('../data/users.json')
-    const jwt = require('jsonwebtoken')
-    const authToken = require('./app_controller')()
 
-    controller.auth = (req, res) => {
-        if (req.body.user != null && req.body.password != null) {
-            const loggingUser = users.find(user => user.user == req.body.user)
+    controller.auth = (req, res, next) => {
+        try {
+            
+            const token = req.headers.authorization.split(' ')[1];
+            
+            const decode = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            req.user = decode;
+            next();
+        } catch (error) {
+            return res.status(401).send({ mensagem: 'Falha na verificação' });
+        }
+    }
 
-            if (loggingUser != undefined && loggingUser.password == req.body.password) {
-                const accessToken = jwt.sign({ name: loggingUser.user }, process.env.ACCESS_TOKEN_SECRET)
-                res.send({ response: "Login realizado com sucesso", accessToken: accessToken })
+    controller.optional = (req, res, next) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decode = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            req.user = decode;
+            next();
+        } catch (error) {
+            next();
+        }
 
-            } else res.send('Usuario ou senha incorretos')
-        } else res.send('Os campos usuario e senha não podem estar vazios')
     }
 
     return controller;

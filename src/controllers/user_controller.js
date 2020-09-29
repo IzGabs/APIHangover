@@ -1,6 +1,4 @@
 const mysql = require('../mysql');
-const connectionPool = require('../mysql')
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports = () => {
@@ -30,7 +28,6 @@ module.exports = () => {
     controller.createUser = async (req, res, next) => {
 
         try {
-            const saltRounds = 10;
             var query = `SELECT * FROM usuarios WHERE email = ?`;
             var result = await mysql.execute(query, [req.body.email]);
             if (result.length > 0) {
@@ -65,9 +62,14 @@ module.exports = () => {
                 return res.status(401).send({ message: 'Falha na autenticação' })
             }
             if (req.body.email == results[0].email && req.body.senha == results[0].senha) {
-                return res.status(200).send({
-                    message: 'Autenticado com sucesso',
+                const token = jwt.sign({
+                    email: results[0].email,
+                    nome: results[0].nome
+                },
+                process.env.ACCESS_TOKEN_SECRET,{
+                    expiresIn: "1h"
                 });
+                return res.status(200).send({message: 'Autenticado com sucesso', token: token});
             }
             else{
                 return res.status(401).send({ message: 'Falha na autenticação tlk' })  
@@ -77,6 +79,6 @@ module.exports = () => {
             return res.status(401).send({ message: 'Falha na autenticação aki' });
         }
     };
-    
+
     return controller
 }

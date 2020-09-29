@@ -1,5 +1,6 @@
 const drinskRouter = require('express').Router();
 const controllerDrinks = require('../controllers/Drink_Controlller')()
+const controllerauth = require('../controllers/login_controller')()
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -28,10 +29,10 @@ const upload = multer({
 });
 
 
-drinskRouter.get('/Listar', controllerDrinks.listarDrinks)
+drinskRouter.get('/Listar',controllerauth.auth, controllerDrinks.listarDrinks)
 
 drinskRouter.post('/adicionar', 
-//authToken.authenticateToken, 
+controllerauth.auth,
 upload.single('drink_imagem'),
 controllerDrinks.add);
 
