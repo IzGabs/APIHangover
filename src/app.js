@@ -1,17 +1,17 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
+const fs = require('fs');
 const authToken = require('./controllers/app_controller')()
 require('dotenv/config')
 
 const PORT = process.env.PORT || 3333;
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 const routesDrinks = require('./routes/drinks_routes')
+const routesUser = require('./routes/user_routes')
 const routesConfig = require('./routes/config_routes')
 const access = require('./routes/app_routes')
 
@@ -22,19 +22,18 @@ app.use('/', routesConfig)
 
 if (process.env.MOD_RUN == "PRODUCTION") {
     console.log('Server Running in ' + process.env.MOD_RUN)
-    app.use('/api', authToken.authenticateToken, routesDrinks)
+    app.use('/api', authToken.authenticateToken, routesDrinks, routesUser)
 } else {
     console.log('Server Running in ' + process.env.MOD_RUN)
     app.use('/api', routesDrinks)
+    app.use('/api', routesUser)
 }
 
 app.use('/access', access)
 
 
-
 app.use((req, res, next) => {
-    console.log("ab")
-    const erro = new Error('Não encontrado');
+    const erro = new Error('Não encontrado Nada');
     erro.status = 404;
     next(erro);
 });
