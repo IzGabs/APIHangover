@@ -54,5 +54,4 @@ drinskRouter.get('/readyaml', controllerDrinks.readyaml);
 
 drinskRouter.get('/download/:nomeArc', controllerDrinks.download);
 
-
 module.exports = drinskRouter;
