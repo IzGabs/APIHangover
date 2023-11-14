@@ -1,0 +1,46 @@
+{
+    "name": "apihangover",
+    "version": "1.0.0",
+    "description": "Api do Projeto Hangover",
+    "main": "index.js",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "formidable": "^1.2.2",
+        "fs-extra": "^9.0.1",
+        "js-yaml": "^3.14.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.6.3",
+        "mongoose": "^5.10.15",
+        "multer": "^1.4.2",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.4"
+    },
+    "scripts": {
+        "test": "node src/app.js",
+        "start": "npx cross-env MOD_RUN=PRODUCTION node src/app.js",
+        "dev": "npx cross-env MOD_RUN=DEV_MODE nodemon src/app.js ",
+        "start_drinks": "npx cross-env MOD_RUN=PRODUCTION node src/app_drinks.js",
+        "dev_drinks": "npx cross-env MOD_RUN=DEV_MODE nodemon src/app_drinks.js ",
+        "start_foods": "npx cross-env MOD_RUN=PRODUCTION node src/app_foods.js",
+        "dev_foods": "npx cross-env MOD_RUN=DEV_MODE nodemon src/app_foods.js ",
+        "start_restaurant": "npx cross-env MOD_RUN=PRODUCTION node src/app_restaurante.js",
+        "dev_restaurant": "npx cross-env MOD_RUN=DEV_MODE nodemon src/app_restaurante.js "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IzGabs/APIHangover.git"
+    },
+    "keywords": [],
+    "author": "Gabriel Medeiros, Gabriel Carvalho e Bruno Lima",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/IzGabs/APIHangover/issues"
+    },
+    "homepage": "https://github.com/IzGabs/APIHangover#readme",
+    "devDependencies": {
+        "cross-env": "^7.0.2"
+    }
+}

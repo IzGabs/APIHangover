@@ -1,0 +1,6 @@
+[
+    {
+        "type": "listar",
+        "url": "/api/listar"
+    }
+]

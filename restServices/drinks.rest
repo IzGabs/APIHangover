@@ -1,0 +1,54 @@
+GET http://localhost:3336/api/drinks/Listar
+Authorization: Bearer 
+Content-Type: application/json
+###
+
+
+POST http://localhost:3336/api/drinks/adicionar
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+ "nome": "Coro2te",
+ "tipo": "Cachaça",
+ "ingredientes": "Compra no mercado"
+}
+
+###Alterar 
+PUT http://localhost:3336/api/drinks/updateIngredientes/5fc0a2ed9c7fd31cdc5cfe3a
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "ingredientes" : { "principal" : "Cachaç22a", "Opcional" : "Gelo"  }
+}
+
+###
+
+DELETE http://localhost:3336/api/drinks/delete/5fc0a2ed9c7fd31cdc5cfe3a
+Content-Type: application/json
+
+
+###
+
+GET http://localhost:3336/api/searchDrinkByName/Marguerita
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+
+GET http://localhost:3336/api/searchDrinkByType/Coquetel
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+GET http://localhost:3336/api/searchDrinkByValue/100
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+
+
+
+
+

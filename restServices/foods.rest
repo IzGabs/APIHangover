@@ -1,0 +1,33 @@
+GET http://localhost:3335/api/foods/listar
+Authorization: Bearer 
+Content-Type: application/json
+
+###
+
+POST http://localhost:3335/api/foods/cadastrar
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+ "Comida" : "Pao D2oce",
+ "valor" : 14.90
+}
+
+
+###
+
+PUT http://localhost:3335/api/foods/alterarValor/5fc0a324997a591cb8e56f92
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "valor" : 102.20
+}
+
+###
+
+DELETE http://localhost:3335/api/foods/deletar/5fc0a324997a591cb8e56f92
+Content-Type: application/json
+
+
+###

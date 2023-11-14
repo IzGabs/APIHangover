@@ -1,0 +1,13 @@
+title: "Testando tlg"
+url path: "/reading-and-writing-yaml-to-a-file-in-node-js-javascript"
+domain: "localhost:3333.com"
+port: 3333
+is-https: true
+meta:
+  published-at: "Nov. 1st, 2025"
+  author:
+    name: "Eun"
+  tags:
+    - javascript
+    - node.js
+    - web development

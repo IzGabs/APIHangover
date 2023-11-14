@@ -1,0 +1,14 @@
+[
+    {
+        "user": "El Barto",
+        "nome": "Gabiru",
+        "password": 123456789,
+        "acessType": "BASIC"
+    },
+    {
+        "user": "El Gabiru",
+        "nome": "GABS",
+        "password": 123456789,
+        "acessType": "ADMIN"
+    }
+]
